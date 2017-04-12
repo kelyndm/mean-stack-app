@@ -1,3 +1,4 @@
+//This is a connection file using vanilla JS/MongoDB language... no mongoose
 var MongoClient = require('mongodb').MongoClient;
 var dburl = 'mongodb://localhost:27017/meanhotel';
 
