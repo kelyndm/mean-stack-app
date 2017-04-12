@@ -51,7 +51,7 @@ var hotelSchema = new mongoose.Schema({
         // Always store coordinates in longitude (E/W), latitude (N/S) order
         coordinates: {
             type: [Number],
-            index: '2dsphere'
+            index: '2dsphere' //<-This tells mongoose that it is a 2d globe coordinates
         }
     }
 });
