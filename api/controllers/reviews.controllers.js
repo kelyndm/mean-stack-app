@@ -3,18 +3,34 @@ var Hotel = mongoose.model('Hotel');
 
 //Get all reviews for a hotel
 module.exports.reviewsGetAll = function(req, res) {
-    var hotelId = req.params.hotelId;
-    console.log('GET hotelId', hotelId);
+    var id = req.params.hotelId;
+    console.log('GET hotelId', id);
 
     Hotel
-        .findById(hotelId)
+        .findById(id)
         .select('reviews')
-        .exec(function(err, doc){
-            console.log('Returned doc', doc);
-            res
-                .status(200)
-                .json(doc.reviews);
-        });
+        .exec(function(err, doc) {
+        var response = {
+            status : 200,
+            message : []
+        };
+        if (err) {
+            console.log("Error finding hotel");
+            response.status = 500;
+            response.message = err;
+        } else if(!doc) {
+            console.log("Hotel id not found in database", id);
+            response.status = 404;
+            response.message = {
+            "message" : "Hotel ID not found " + id
+            };
+        } else {
+            response.message = doc.reviews ? doc.reviews : [];
+        }
+        res
+            .status(response.status)
+            .json(response.message);
+    });
 };
 //Get one review for a hotel
 module.exports.reviewsGetOne = function(req, res) {
@@ -26,10 +42,33 @@ module.exports.reviewsGetOne = function(req, res) {
         .findById(hotelId)
         .select('reviews')
         .exec(function(err, hotel){
-            console.log('Returned hotel', hotel);
-            var review = hotel.reviews.id(reviewId);
+            var response = {
+                status: 200,
+                message: {}
+            };
+            if(err) {
+                console.log("Error finding hotel");
+                response.status = 500;
+                response.message = err;
+            } else if (!hotel) {
+                console.log("Hotel id not found in database", id);
+                response.status = 404;
+                response.message = {
+                    "message": "Hotel ID not found " + id
+                };
+            } else {
+                //Get the review
+                response.message = hotel.reviews.id(reviewId);
+                //If there is not review.. mongoose will return null
+                if(!response.message) {
+                    response.status = 404;
+                    response.message = {
+                        "message": "Review ID not found " + reviewId
+                    };
+                }
+            }
             res
-                .status(200)
-                .json(review);
+                .status(response.status)
+                .json(response.message);
         });
 };
