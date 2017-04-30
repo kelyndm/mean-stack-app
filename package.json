@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/kelyndm/mean-stack-app#readme",
   "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mongodb": "^2.2.25",

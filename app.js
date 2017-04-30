@@ -18,6 +18,9 @@ app.use(function(req, res, next) {
 // Set static directory before defining routes
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Add this in order to use angular and angular_route in the SPA
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
+
 // Enable parsing of posted forms
 app.use(bodyParser.urlencoded({ extended: false }));
 
