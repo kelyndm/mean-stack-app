@@ -1,6 +1,4 @@
-angular.module('meanhotel', ['ngRoute'])
-    .config(config)
-    .controller('HotelsController', HotelsController);
+angular.module('meanhotel', ['ngRoute']).config(config);
 
 function config($routeProvider) {
     $routeProvider
@@ -9,9 +7,4 @@ function config($routeProvider) {
             controller: HotelsController,
             controllerAs: 'vm'
         });
-}
-
-function HotelsController() {
-    var vm = this;
-    vm.title = 'MEAN Hotel App';
 }
