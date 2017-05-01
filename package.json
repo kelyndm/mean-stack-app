@@ -1,34 +1,26 @@
 {
-  "name": "mean-app",
+  "name": "mean-stakc-hero",
   "version": "1.0.0",
-  "description": "MEAN stack application",
+  "description": "This repo contains the MEAN stack application that is built through  Full Stack Training's MEAN Stack course.",
   "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "mongodb": "^2.1.7",
+    "mongoose": "^4.4.8",
+    "angular": "^1.5.6",
+    "angular-route": "^1.5.6"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3"
+  },
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kelyndm/mean-stack-app.git"
+    "url": "git+https://github.com/fullstacktraining/mean-stack-hero.git"
   },
-  "keywords": [
-    "mean"
-  ],
-  "author": "Kelyn Mann",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kelyndm/mean-stack-app/issues"
-  },
-  "homepage": "https://github.com/kelyndm/mean-stack-app#readme",
-  "dependencies": {
-    "angular": "^1.6.4",
-    "angular-route": "^1.6.4",
-    "body-parser": "^1.17.1",
-    "express": "^4.15.2",
-    "mongodb": "^2.2.25",
-    "mongoose": "^4.9.4"
-  },
-  "devDependencies": {
-    "mocha": "^3.2.0"
-  }
+  "author": "Tamas Piros",
+  "license": "ISC"
 }

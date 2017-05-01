@@ -1,4 +1,4 @@
-require('./api/data/db.js'); //<-Changed from dbconnection.js to db.js to use mongoose
+require('./api/data/db.js');
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -12,17 +12,17 @@ app.set('port', 3000);
 // Add middleware to console log every request
 app.use(function(req, res, next) {
   console.log(req.method, req.url);
-  next(); 
+  next();
 });
 
 // Set static directory before defining routes
 app.use(express.static(path.join(__dirname, 'public')));
-
-//Add this in order to use angular and angular_route in the SPA
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
+app.use('/fonts', express.static(__dirname + '/fonts'));
 
 // Enable parsing of posted forms
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Add some routing
 app.use('/api', routes);
