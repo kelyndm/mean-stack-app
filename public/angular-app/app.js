@@ -1,9 +1,12 @@
 angular.module('meanhotel', ['ngRoute']).config(config);
 
 function config($routeProvider, $locationProvider) {
-    $locationProvider.hashPrefix('');
+  $locationProvider.hashPrefix('');
   $routeProvider
     .when('/', {
+      templateUrl: 'angular-app/main/main.html'
+    })
+    .when('/hotels', {
       templateUrl: 'angular-app/hotel-list/hotels.html',
       controller: HotelsController,
       controllerAs: 'vm'
@@ -17,5 +20,8 @@ function config($routeProvider, $locationProvider) {
       templateUrl: 'angular-app/register/register.html',
       controller: RegisterController,
       controllerAs: 'vm'
+    })
+    .otherwise({
+      redirectTo: '/'
     });
 }
