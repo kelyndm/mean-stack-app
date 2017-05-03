@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var dburl = 'mongodb://localhost:27017/meanhotel';
-var retry = null;
+var mongoose  = require('mongoose');
+var dburl     = 'mongodb://localhost:27017/meanhotel';
+var retry     = null;
 mongoose.connect(dburl);
 
 // CONNECTION EVENTS
@@ -44,3 +44,4 @@ process.on('SIGTERM', function() {
 
 // BRING IN YOUR SCHEMAS & MODELS
 require('./hotels.model');
+require('./users.model');
