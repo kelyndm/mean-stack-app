@@ -2,7 +2,7 @@ angular.module('meanhotel', ['ngRoute', 'angular-jwt']).config(config).run(run);
 
 function config($httpProvider, $routeProvider, $locationProvider) {
   $httpProvider.interceptors.push('AuthInterceptor');
-  $locationProvider.html5Mode(true);
+  $locationProvider.hashPrefix('');
   $routeProvider
     .when('/', {
       templateUrl: 'angular-app/main/main.html',
